@@ -7,7 +7,7 @@ In the below examples, I'm going to generate random set of data and apply `Array
 
 ## 1. Array of Integers
 
-### Generating Integer array
+##### Generating Integer array
 
 ```java
 import java.util.Random;
@@ -21,7 +21,7 @@ private Integer[] randomIntArray() {
     return randArr;
 }
 ```
-### Displaying the array of any type
+##### Displaying the array of any type
 ```java
 private <T> void displayArray(T[] arr) {
     for (T t : arr) {
@@ -30,7 +30,7 @@ private <T> void displayArray(T[] arr) {
     System.out.println();
 }
 ```
-### Sorting the array
+##### Sorting the array
     
 ```java
 // sort integer array
@@ -62,7 +62,7 @@ For string, it is alphabetical order by default.
 Since we want to sort based on number of characters in the string, we will override the `compare` the method such that it sorts based on the length of the string. 
 `compare` method returns negative, 0 or positive. If it is negative or 0 the two elements are sorted, else the two elements are not sorted. 
 
-### Generating String array
+##### Generating String array
 ```java
 private String randomString() {
     int strLen = random.nextInt(N);
@@ -84,7 +84,7 @@ private String[] randomStringArray() {
     return randArr;
 }
 ```
-### Sorting the array
+##### Sorting the array
 
 ```java
 // sort string array using comparator based on length
@@ -166,7 +166,7 @@ private Employee[] randomEmployeeArray() {
 We want to sort based on age. If any two employees have equal age, sort based on alphabetical order.
 We can chain the above conditions using `comparing` and `thenComparing` which take lambda function or method reference as a parameter which says what value to compare.
 
-### Sorting the array
+##### Sorting the array
 
 ```java
 Employee[] toSortEmployee = randomEmployeeArray();
@@ -180,7 +180,7 @@ Let's see how we can sort List and Map using `Collections.sort` method.
 
 ## 1. List of Integers
 
-### Generating Integer list
+##### Generating Integer list
 
 ```java
 import java.util.Random;
@@ -194,7 +194,7 @@ private List<Integer> randomIntegerList() {
     return randList;
 }
 ```
-### Displaying the list of any type
+##### Displaying the list of any type
 ```java
 public static <T> void displayList(List<T> list) {
     System.out.println("Showing List: ");
@@ -204,7 +204,7 @@ public static <T> void displayList(List<T> list) {
     System.out.println();
 }
 ```
-### Sorting the list
+##### Sorting the list
     
 ```java
 // sort integer list
@@ -220,7 +220,7 @@ Let's sort a list of strings based on number of characters.
 Collections.sort(T[] a, Comparator<? super T> c)
 ```
 
-### Generating String list
+##### Generating String list
 ```java
 private List<String> randomStringList() {
     List<String> randList = new ArrayList<>();
@@ -230,7 +230,7 @@ private List<String> randomStringList() {
     return randList;
 }
 ```
-### Sorting the list
+##### Sorting the list
 
 ```java
 // sort string array using comparator based on length
@@ -246,7 +246,7 @@ CommonUtils.displayList(toSortString);
 ```
 ## 3. Map
 
-### Generating Map of integer and string
+##### Generating Map of integer and string
 ```java
 private LinkedHashMap<Integer, String> randomMap() {
     LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
@@ -256,7 +256,7 @@ private LinkedHashMap<Integer, String> randomMap() {
     return map;
 }
 ```
-### Sorting the map
+##### Sorting the map
 Let's sort the map by key
 ```java
 LinkedHashMap<Integer, String> sortedMap = new LinkedHashMap<>();
@@ -269,7 +269,7 @@ CommonUtils.displayMap(sortedMap);
 ## 4. Array of Objects
 
 Here we will use **Java 8** feature of `comparing` and `thenComparing`.
-### Generating list of Employees
+##### Generating list of Employees
 ```java
 private List<Employee> randomEmployeeList() {
     List<Employee> randList = new ArrayList<>();
@@ -283,7 +283,7 @@ private List<Employee> randomEmployeeList() {
 We want to sort based on age. If any two employees have equal age, sort based on alphabetical order.
 We can chain the above conditions using `comparing` and `thenComparing` which take lambda function or method reference as a parameter which says what value to compare.
 
-### Sorting the list
+##### Sorting the list
 
 ```java
 List<Employee> toSortEmployee = randomEmployeeList();
