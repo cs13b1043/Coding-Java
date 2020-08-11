@@ -1,1 +1,1 @@
-[Sorting Arrays in Java](docs/Sorting.md)
+[Sorting Arrays in Java](Sorting.md)
