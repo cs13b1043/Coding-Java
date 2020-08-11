@@ -12,6 +12,7 @@ public class CommonUtils {
     private static Random random = new Random();
 
     public static <T> void displayArray(T[] arr) {
+        System.out.println("Showing Array: ");
         for (T t : arr) {
             System.out.print(t + " ");
         }
@@ -19,6 +20,7 @@ public class CommonUtils {
     }
 
     public static <T> void displayList(List<T> list) {
+        System.out.println("Showing List: ");
         for (T t : list) {
             System.out.print(t + " ");
         }
@@ -26,6 +28,7 @@ public class CommonUtils {
     }
 
     public static <E, T> void displayMap(LinkedHashMap<E,T> map) {
+        System.out.println("Showing Map: ");
         for (Map.Entry<E, T> e : map.entrySet()) {
             System.out.println(e.getKey() + " " + e.getValue());
         }
