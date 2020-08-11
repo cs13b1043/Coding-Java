@@ -174,8 +174,127 @@ Arrays.sort(toSortEmployee, Comparator.comparing(Employee::getAge).thenComparing
 displayArray(toSortEmployee);
 ```
 
+# Sorting Collections in Java
+Since for arrays we need to know the number of elements before creating an array, we commonly use Collections.
+Let's see how we can sort List and Map using `Collections.sort` method. 
+
+## 1. List of Integers
+
+### Generating Integer list
+
+```java
+import java.util.Random;
+
+int N = 30;
+private List<Integer> randomIntegerList() {
+    List<Integer> randList = new ArrayList<>();
+    for (int i = 0; i < N; i++) {
+        randList.add(random.nextInt(100));
+    }
+    return randList;
+}
+```
+### Displaying the list of any type
+```java
+public static <T> void displayList(List<T> list) {
+    System.out.println("Showing List: ");
+    for (T t : list) {
+        System.out.print(t + " ");
+    }
+    System.out.println();
+}
+```
+### Sorting the list
+    
+```java
+// sort integer list
+List<Integer> toSortInt = randomIntegerList();
+Collections.sort(toSortInt);
+CommonUtils.displayList(toSortInt);
+```
+
+## 2. List of Strings
+Let's sort a list of strings based on number of characters.
+
+```java
+Collections.sort(T[] a, Comparator<? super T> c)
+```
+
+### Generating String list
+```java
+private List<String> randomStringList() {
+    List<String> randList = new ArrayList<>();
+    for (int i = 0; i < N; i++) {
+        randList.add(CommonUtils.randomString(N));
+    }
+    return randList;
+}
+```
+### Sorting the list
+
+```java
+// sort string array using comparator based on length
+
+List<String> toSortString = randomStringList();
+Collections.sort(toSortString, new Comparator<String>() {
+    @Override
+    public int compare(String o1, String o2) {
+        return o1.length() - o2.length();
+    }
+});
+CommonUtils.displayList(toSortString);
+```
+## 3. Map
+
+### Generating Map of integer and string
+```java
+private LinkedHashMap<Integer, String> randomMap() {
+    LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+    for (int i = 0; i < N; i++) {
+        map.put(random.nextInt(100), CommonUtils.randomString(N));
+    }
+    return map;
+}
+```
+### Sorting the map
+Let's sort the map by key
+```java
+LinkedHashMap<Integer, String> sortedMap = new LinkedHashMap<>();
+for (Map.Entry<Integer, String> entry : entries) {
+    sortedMap.put(entry.getKey(), entry.getValue());
+}
+CommonUtils.displayMap(sortedMap);
+```
+
+## 4. Array of Objects
+
+Here we will use **Java 8** feature of `comparing` and `thenComparing`.
+### Generating list of Employees
+```java
+private List<Employee> randomEmployeeList() {
+    List<Employee> randList = new ArrayList<>();
+    for (int i = 0; i < N; i++) {
+        randList.add(CommonUtils.randomObject());
+    }
+    return randList;
+}
+```
+
+We want to sort based on age. If any two employees have equal age, sort based on alphabetical order.
+We can chain the above conditions using `comparing` and `thenComparing` which take lambda function or method reference as a parameter which says what value to compare.
+
+### Sorting the list
+
+```java
+List<Employee> toSortEmployee = randomEmployeeList();
+Collections.sort(toSortEmployee, Comparator.comparing(Employee::getAge)
+        .thenComparing(e -> e.getName().toLowerCase()));
+CommonUtils.displayList(toSortEmployee);
+```
+
 ## Summary
 
+#### For Arrays:
 ```java
 Arrays.sort(toSortInt);
 Arrays.sort(toSortIntRange, 10, 20);
@@ -193,5 +312,25 @@ Arrays.sort(toSortString2, (s1, s2) -> s1.toLowerCase().compareTo(s2.toLowerCase
 
 // using comparing and thenComparing to chain multiple conditions
 Arrays.sort(toSortEmployee, Comparator.comparing(Employee::getAge)
+        .thenComparing(e -> e.getName().toLowerCase()));
+```
+
+#### For Collections:
+```java
+Collections.sort(toSortInt);
+
+// using comparator
+Collections.sort(toSortString, new Comparator<String>() {
+    @Override
+    public int compare(String o1, String o2) {
+        return o1.length() - o2.length();
+    }
+});
+
+// using lambda expression
+Collections.sort(toSortString2, (s1, s2) -> s1.toLowerCase().compareTo(s2.toLowerCase()));
+
+// using comparing and thenComparing to chain multiple conditions
+Collections.sort(toSortEmployee, Comparator.comparing(Employee::getAge)
         .thenComparing(e -> e.getName().toLowerCase()));
 ```
