@@ -11,7 +11,7 @@ So I decided to work on quicksort and algorithms related to it.
 
 1. [Quicksort program in Java](#1-quicksort-in-java)
 2. [Finding kth smallest element in an array (can be used to find median)](#2-finding-kth-smallest-element-in-an-array)
-3. Wiggle sort
+3. [Wiggle sort](#3-wiggle-sort)
 
 ## 1. QuickSort in Java
 
@@ -179,5 +179,52 @@ int findKthSmallest(int[] nums, int k) {
         else break;
     }
     return nums[curr];
+}
+```
+## 3. Wiggle Sort
+Sort the given array `nums` such that `nums[0] < nums[1] > nums[2] < nums[3]....`
+Strict checking of adjacent elements makes it difficult to come up with an algorithm.
+
+Another variant of Wiggle sort where the array should follow the condition `nums[0] <= nums[1] >= nums[2] <= nums[3]....` is a little simpler.
+
+My first thoughts of approaching this problem are:
+1. Sort the array and swap adjacent elements
+2. Use BST and do pre-order or post-order traversal (doesn't work with duplicates)
+
+I couldn't come up with an algorithm which follows strict checking which is when I looked into the solution.
+
+**Steps:**
+1. Find median of the array
+2. If elements > median, fill in 1st odd slots
+3. If elements < median, last even slots
+4. Remaining entries are median
+
+For this, we can create a new array and start filling using the above steps.
+
+We can also do this in-place without using extra space.
+```java
+public void wiggleSort(int[] nums) {
+    int m = findMedian(nums);
+    int median = nums[m];
+
+    // last even slot
+    int right = (((nums.length-1) % 2==0) ? (nums.length-1) : (nums.length-2));
+    
+    // first odd slot
+    int left = 1;
+
+    for(int i=0; i<nums.length; i++) {
+        // elements less than median in even position - fill from right
+        if(nums[i] < median && !(i%2==0 && i>=right) && right>0){
+            swap(nums, i--, right);
+            right -= 2;
+        }
+        
+        // elements greater than median in odd position - fill from left
+        else if(nums[i] > median && !(i%2!=0 && i<=left) && left<nums.length){
+            swap(nums, i--, left);
+            left+= 2;
+        }
+    }
 }
 ```
