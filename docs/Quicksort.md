@@ -59,11 +59,11 @@ For this, we take two variables
 - `left_pointer` which starts from `left` of `arr`
 - `right_pointer` which starts from `right` of `arr`
 
-*left_pointer* &rarr;
-0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
----|---|---|---|---|---|---|---
+*left_pointer* &rarr;  
+0 | 1 | 2 | 3 | 4 | 5 | 6 | 7  
+---|---|---|---|---|---|---|---  
 
-&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &larr; *right_pointer*
+&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &larr; *right_pointer*  
 
 **Steps:**
 1. From left find an element > pivot  
