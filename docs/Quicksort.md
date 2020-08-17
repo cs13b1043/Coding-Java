@@ -181,6 +181,8 @@ int findKthSmallest(int[] nums, int k) {
     return nums[curr];
 }
 ```
+
+
 ## 3. Wiggle Sort
 Sort the given array `nums` such that `nums[0] < nums[1] > nums[2] < nums[3]....`
 Strict checking of adjacent elements makes it difficult to come up with an algorithm.
