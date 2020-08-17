@@ -60,6 +60,7 @@ For this, we take two variables
 - `right_pointer` which starts from `right` of `arr`
 
 *left_pointer* &rarr;  
+
 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7  
 ---|---|---|---|---|---|---|---  
 
@@ -101,12 +102,14 @@ int newPivotIndex = (left_pointer <= middle ? left_pointer: left_pointer - 1);
 We stop the big while loop if `arr[left_pointer] > pivot`
 
 _ | _ | pivot | _ | left_pointer | _ | _ 
+
 ---|---|---|---|---|---|---  
 
 In the above case, we have to swap with `arr[left_pointer-1]` which is less than `pivot` so that lesser element will be on left side.  
 <br/>
 
-_ | _ | left_pointer | _ | pivot | _ | _ 
+_ | _ | left_pointer | _ | pivot | _ | _  
+
 ---|---|---|---|---|---|---  
 
 In the above case, we have to swap with `arr[left_pointer]` which is greater than pivot so that lesser element will be on left side.  
@@ -119,36 +122,52 @@ Taking below 4 examples for testing the code.
 
 **Example 1:**  
 Position of pivot element is left side of its position after sorting
+
 2 | 1 | *4* | 3 | 5 
+
 ---|---|---|---|---  
 
 After sorting, 
+
 2 | 1 | 3 | *4* | 5 
+
 ---|---|---|---|--- 
 
 **Example 2:**  
 Position of pivot element is right side of its position after sorting
+
 1 | 3 | *2* | 4 | 5 
+
 ---|---|---|---|---  
 
 After sorting, 
+
 1 | *2* | 3 | 4 | 5 
+
 ---|---|---|---|--- 
 
 **Example 3:**  
 Position of pivot element is left-most after sorting (pivot is the least of all elements in the array)
+
 7 | 8 | *1* | 2 | 6 
+
 ---|---|---|---|---  
 
 After sorting, 
+
 *1* | 7 | 8 | 2 | 6 
+
 ---|---|---|---|--- 
 
 **Example 4:**  
 Position of pivot element is right-most after sorting (pivot is the highest of all elements in the array)
+
 1 | 4 | *9* | 2 | 6 
+
 ---|---|---|---|---  
 
 After sorting, 
+
 1 | 4 | 2 | 6 | *9* 
+
 ---|---|---|---|--- 
