@@ -120,39 +120,39 @@ Taking below 4 examples for testing the code.
 **Example 1:**  
 Position of pivot element is left side of its position after sorting
 
-2 | 1 | *4* | 3 | 5  
+2 | 1 | **4** | 3 | 5  
 
 After sorting, 
 
-2 | 1 | 3 | *4* | 5 
+2 | 1 | 3 | **4** | 5 
 
 
 **Example 2:**  
 Position of pivot element is right side of its position after sorting
 
-1 | 3 | *2* | 4 | 5 
+1 | 3 | **2** | 4 | 5 
 
 After sorting, 
 
-1 | *2* | 3 | 4 | 5 
+1 | **2** | 3 | 4 | 5 
 
 
 **Example 3:**  
 Position of pivot element is left-most after sorting (pivot is the least of all elements in the array)
 
-7 | 8 | *1* | 2 | 6 
+7 | 8 | **1** | 2 | 6 
 
 After sorting, 
 
-*1* | 7 | 8 | 2 | 6 
+**1** | 7 | 8 | 2 | 6 
 
 
 **Example 4:**  
 Position of pivot element is right-most after sorting (pivot is the highest of all elements in the array)
 
-1 | 4 | *9* | 2 | 6 
+1 | 4 | **9** | 2 | 6 
 
 After sorting, 
 
-1 | 4 | 2 | 6 | *9* 
+1 | 4 | 2 | 6 | **9** 
 
