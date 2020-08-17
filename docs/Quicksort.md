@@ -9,8 +9,8 @@ Though the concept of quicksort is clear to me, I never used it often as its wor
 When I tried to program quick sort in Java, I faced a challenge while coding partition algorithm.
 So I decided to work on quicksort and algorithms related to it.
 
-1. Quicksort program in Java
-2. Finding kth largest element in an array (can be used to find median)
+1. [Quicksort program in Java](1-quicksort-in-java)
+2. [Finding kth smallest element in an array (can be used to find median)](2-finding-kth-smallest-element-in-an-array)
 3. Wiggle sort
 
 ## 1. QuickSort in Java
@@ -156,3 +156,28 @@ After sorting,
 
 1 | 4 | 2 | 6 | **9** 
 
+
+## 2. Finding Kth smallest element in an array
+We can use the partitioning algorithm to find Kth smallest element in an array.
+After partition, 
+- if pivot index < k, partition right side of the array
+- if pivot index > k, partition left side of the array
+- if pivot index = k, we found the kth smallest element 
+
+>Note: pivot index indicates that it will be in that position after array is sorted. We are finding the `k`th position in sorted array. 
+```java
+int findKthSmallest(int[] nums, int k) {
+    int l = 0;
+    int r = nums.length - 1;
+    int curr = -1;
+
+    while (l <= r) {
+        curr = partition(nums, l, r);
+        
+        if (curr < K) l = curr + 1;
+        else if (curr > K) r = curr - 1;
+        else break;
+    }
+    return nums[curr];
+}
+```
