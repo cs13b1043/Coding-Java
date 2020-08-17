@@ -266,7 +266,7 @@ for (Map.Entry<Integer, String> entry : entries) {
 CommonUtils.displayMap(sortedMap);
 ```
 
-## 4. Array of Objects
+## 4. List of Objects
 
 Here we will use **Java 8** feature of `comparing` and `thenComparing`.
 ##### Generating list of Employees
