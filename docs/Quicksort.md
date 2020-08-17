@@ -88,7 +88,7 @@ int partition(int[] arr, int left, int right) {
         if (left_pointer < right_pointer) swap(arr, left_pointer, right_pointer);
     }
 
-    int newPivotIndex = (left_pointer <= middle ? left_pointer: left_pointer - 1);
+    int newPivotIndex = (left_pointer <= middle ? left_pointer : left_pointer - 1);
     swap(arr, middle, newPivotIndex);
 
     return newPivotIndex;
@@ -96,7 +96,7 @@ int partition(int[] arr, int left, int right) {
 ```
 **Why this condition ?**
 ```java
-int newPivotIndex = (left_pointer <= middle ? left_pointer: left_pointer - 1);
+int newPivotIndex = (left_pointer <= middle ? left_pointer : left_pointer - 1);
 ```
 We stop the big while loop if `arr[left_pointer] > pivot`
 
@@ -210,22 +210,22 @@ public void wiggleSort(int[] nums) {
     int median = nums[m];
 
     // last even slot
-    int right = (((nums.length-1) % 2==0) ? (nums.length-1) : (nums.length-2));
-    
+    int right = (((nums.length - 1) % 2 == 0) ? (nums.length - 1) : (nums.length - 2));
+
     // first odd slot
     int left = 1;
 
-    for(int i=0; i<nums.length; i++) {
+    for (int i = 0; i < nums.length; i++) {
         // elements less than median in even position - fill from right
-        if(nums[i] < median && !(i%2==0 && i>=right) && right>0){
+        if (nums[i] < median && !(i % 2 == 0 && i >= right) && right > 0) {
             swap(nums, i--, right);
             right -= 2;
         }
-        
+
         // elements greater than median in odd position - fill from left
-        else if(nums[i] > median && !(i%2!=0 && i<=left) && left<nums.length){
+        else if (nums[i] > median && !(i % 2 != 0 && i <= left) && left < nums.length) {
             swap(nums, i--, left);
-            left+= 2;
+            left += 2;
         }
     }
 }
