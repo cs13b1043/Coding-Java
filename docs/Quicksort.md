@@ -5,8 +5,8 @@ I couldn't come up with any algorithm which works especially when there are dupl
 
 It uses **Partition Algorithm of Quick Sort** to find the Median of the array in **O(n)** time without sorting the array.
 
-Though the concept of quicksort is clear to me, I never used it often as it's worse case time is O(n<sup>2</sup>). I used to prefer Merge sort and got pretty comfortable with Merge sort.
-But today when I tried to program quick sort in Java, I faced a challenge while coding partition algorithm.
+Though the concept of quicksort is clear to me, I never used it often as its worse case time is O(n<sup>2</sup>) and we have Merge sort whose time complexity is O(n logn) even in worst case and got pretty comfortable with it. I never imagined that quick sort concepts will be useful in solving other problems.
+When I tried to program quick sort in Java, I faced a challenge while coding partition algorithm.
 So I decided to work on quicksort and algorithms related to it.
 
 1. Quicksort program in Java
@@ -47,4 +47,108 @@ Next we apply partitioning algorithm on left and right side of the pivot recursi
 After the quicksort is complete, since every element is in its correct position the array is sorted.
 
 ### Partitioning
+Let's take an array `arr` and we want to partition the values between indices `left` and `right`(inclusive) with pivot as `middle` element.
+```java
+void int partition(int[] arr, int left, int right) {
+    int middle = (left  + right)/2;
+    int pivot = arr[middle];
+}
+```
+Our goal is to place all elements less than `arr[middle]` to the left side and all elements greater than `arr[middle]` to the right side in the array.
+For this, we take two variables
+- `left_pointer` which starts from `left` of `arr`
+- `right_pointer` which starts from `right` of `arr`
 
+*left_pointer* &rarr;
+0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+---|---|---|---|---|---|---|---
+
+&nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &larr; *right_pointer*
+
+**Steps:**
+1. From left find an element > pivot  
+2. From right find an element < pivot  
+3. Swap elements in `left_pointer` and `right_pointer`  
+4. Do steps 1-3 until `left_pointer` crosses `right_pointer` (i.e., `left_pointer > right_pointer`)
+5. Finally we swap middle element with `left_pointer` or `left_pointer-1`
+
+After transforming into code:
+```java
+int partition(int[] arr, int left, int right) {
+    int middle = (left + right) / 2;
+    int pivot = arr[middle];
+
+    int left_pointer = left;
+    int right_pointer = right;
+
+    while (left_pointer < right_pointer) {
+        while (left_pointer <= right && (left_pointer == middle || arr[left_pointer] <= arr[middle])) left_pointer++;
+        while (right_pointer >= left && (right_pointer == middle || arr[right_pointer] >= arr[middle])) right_pointer--;
+
+        if (left_pointer < right_pointer) swap(arr, left_pointer, right_pointer);
+    }
+
+    int newPivotIndex = (left_pointer <= middle ? left_pointer: left_pointer - 1);
+    swap(arr, middle, newPivotIndex);
+
+    return newPivotIndex;
+}
+```
+**Why this condition ?**
+```java
+int newPivotIndex = (left_pointer <= middle ? left_pointer: left_pointer - 1);
+```
+We stop the big while loop if `arr[left_pointer] > pivot`
+
+_ | _ | pivot | _ | left_pointer | _ | _ 
+---|---|---|---|---|---|---  
+
+In the above case, we have to swap with `arr[left_pointer-1]` which is less than `pivot` so that lesser element will be on left side.  
+<br/>
+
+_ | _ | left_pointer | _ | pivot | _ | _ 
+---|---|---|---|---|---|---  
+
+In the above case, we have to swap with `arr[left_pointer]` which is greater than pivot so that lesser element will be on left side.  
+<br />
+<br />
+
+
+
+Taking below 4 examples for testing the code.
+
+**Example 1:**  
+Position of pivot element is left side of its position after sorting
+2 | 1 | *4* | 3 | 5 
+---|---|---|---|---  
+
+After sorting, 
+2 | 1 | 3 | *4* | 5 
+---|---|---|---|--- 
+
+**Example 2:**  
+Position of pivot element is right side of its position after sorting
+1 | 3 | *2* | 4 | 5 
+---|---|---|---|---  
+
+After sorting, 
+1 | *2* | 3 | 4 | 5 
+---|---|---|---|--- 
+
+**Example 3:**  
+Position of pivot element is left-most after sorting (pivot is the least of all elements in the array)
+7 | 8 | *1* | 2 | 6 
+---|---|---|---|---  
+
+After sorting, 
+*1* | 7 | 8 | 2 | 6 
+---|---|---|---|--- 
+
+**Example 4:**  
+Position of pivot element is right-most after sorting (pivot is the highest of all elements in the array)
+1 | 4 | *9* | 2 | 6 
+---|---|---|---|---  
+
+After sorting, 
+1 | 4 | 2 | 6 | *9* 
+---|---|---|---|--- 
