@@ -1,4 +1,4 @@
-# Quick Sort
+# Quick Sort and Wiggle Sort
 
 Today, I'm trying to solve a problem in leetcode [Wiggle Sort II](https://leetcode.com/explore/interview/card/top-interview-questions-hard/120/sorting-and-searching/857/).
 I couldn't come up with any algorithm which works especially when there are duplicates in the array. Then I looked into the solution.
