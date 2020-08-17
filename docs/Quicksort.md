@@ -9,8 +9,8 @@ Though the concept of quicksort is clear to me, I never used it often as its wor
 When I tried to program quick sort in Java, I faced a challenge while coding partition algorithm.
 So I decided to work on quicksort and algorithms related to it.
 
-1. [Quicksort program in Java](1-quicksort-in-java)
-2. [Finding kth smallest element in an array (can be used to find median)](2-finding-kth-smallest-element-in-an-array)
+1. [Quicksort program in Java](#1-quicksort-in-java)
+2. [Finding kth smallest element in an array (can be used to find median)](#2-finding-kth-smallest-element-in-an-array)
 3. Wiggle sort
 
 ## 1. QuickSort in Java
