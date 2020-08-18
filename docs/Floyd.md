@@ -32,6 +32,7 @@ Since `hare` is moving at double speed,
 - <img src="https://render.githubusercontent.com/render/math?math=x%20=%20len" />
 
 To find start of the cycle, we have to traverse <img src="https://render.githubusercontent.com/render/math?math=len-(x-i)%2B1 = i%2B1" /> from where they met.
-![Example](/images/Floyd-cycle.png)
+
+![Example](/assets/images/Floyd-cycle.png)
 
 So, the pointer from the meeting point and the pointer from start of LinkedList meets at start of cycle when they go at speed 1.
