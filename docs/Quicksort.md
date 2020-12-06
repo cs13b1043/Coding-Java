@@ -165,6 +165,7 @@ After partition,
 - if pivot index = k, we found the kth smallest element 
 
 >Note: pivot index indicates that it will be in that position after array is sorted. We are finding the `k`th position in sorted array. 
+
 ```java
 int findKthSmallest(int[] nums, int k) {
     int l = 0;
